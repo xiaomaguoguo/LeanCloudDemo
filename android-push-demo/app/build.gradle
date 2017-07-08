@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '26.0.0'
+
+    defaultConfig {
+        applicationId "com.avos.avoscloud.PushDemo"
+        minSdkVersion 14
+        targetSdkVersion 26
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    packagingOptions{
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:21.0.3'
+    // LeanCloud 基础包
+//    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
+    // 推送与实时聊天需要的包
+//    compile('cn.leancloud.android:avoscloud-push:v3.+@aar') { transitive = true }
+    // LeanCloud 统计包
+//    compile 'cn.leancloud.android:avoscloud-statistics:v3.+'
+    compile files('libs/avoscloud-push-v4.4.0.jar')
+    compile files('libs/avoscloud-sdk-v4.4.0.jar')
+    compile files('libs/fastjson-1.2.30.jar')
+    compile files('libs/okhttp-3.8.0.jar')
+    compile files('libs/okio-1.13.0.jar')
+    compile files('libs/protobuf-java-2.6.1.jar')
+    compile files('libs/Java-WebSocket-1.3.2-leancloud.jar')
+}
